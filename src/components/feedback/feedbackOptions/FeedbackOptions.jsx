@@ -1,4 +1,3 @@
-import shortid from 'shortid';
 
 export const FeedbackOptions = props => {
   const { options, onLeaveFeedback } = props;
@@ -6,8 +5,8 @@ export const FeedbackOptions = props => {
     <ul>
       {options.map(item => {
         return (
-          <li key={shortid.generate()}>
-            <button type="button" onClick={onLeaveFeedback}>
+          <li key={item}>
+            <button type="button" onClick={() => onLeaveFeedback(item)}>
               {item}
             </button>
           </li>

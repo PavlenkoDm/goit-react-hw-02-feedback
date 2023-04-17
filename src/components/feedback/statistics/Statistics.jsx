@@ -1,24 +1,22 @@
-import shortid from 'shortid';
 
 export const Statistics = props => {
     const { good, neutral, bad, total, positivePercentage } = props;
-    const stateObj = { good, neutral, bad };
-    const stateArr = Object.keys(stateObj);
+    const stateArr = Object.entries({ good, neutral, bad });
 
     return (
         <>
             <p>Statistics</p>
             <ul>
-                {stateArr.map(item => {
+                {stateArr.map(([key, value]) => {
                     return (
-                        <li key={shortid.generate()} style={{textTransform: 'capitalize'}}>
-                            {item}: {stateObj[item]}
+                        <li key={key} style={{textTransform: 'capitalize'}}>
+                            {key}: {value}
                         </li>
                     );
                 })}
             </ul>
-            <p>Total: {total()}</p>
-            <p>Positive feedback: {positivePercentage()}%</p>
+            <p>Total: {total}</p>
+            <p>Positive feedback: {positivePercentage}%</p>
         </>
     );
 };
